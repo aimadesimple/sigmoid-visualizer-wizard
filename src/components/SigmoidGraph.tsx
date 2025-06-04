@@ -46,11 +46,11 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
     return null;
   };
 
-  // Custom label component for y-axis values
-  const YAxisLabel = ({ x, y, value }: { x: number; y: number; value: string }) => (
+  // Custom label component for y-axis
+  const createYLabel = (value: string) => (props: any) => (
     <text 
-      x={x - 15} 
-      y={y + 4} 
+      x={props.viewBox.x - 10} 
+      y={props.viewBox.y + 4} 
       textAnchor="end" 
       fontSize="12" 
       fill="#6b7280"
@@ -64,7 +64,7 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
     <div className="space-y-4">
       <div className="h-80">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+          <LineChart data={data} margin={{ top: 20, right: 30, left: 40, bottom: 20 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#e0e7ff" />
             <XAxis 
               dataKey="x" 
@@ -95,22 +95,39 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
             <ReferenceLine y={0.5} stroke="#e0e7ff" strokeDasharray="2 2" strokeWidth={1} />
             <ReferenceLine y={1} stroke="#e0e7ff" strokeDasharray="2 2" strokeWidth={1} />
             
-            {/* Y-axis labels using ReferenceDot with custom labels */}
-            <ReferenceDot x={0} y={0} r={0} fill="transparent">
-              <YAxisLabel x={0} y={0} value="0.0" />
-            </ReferenceDot>
-            <ReferenceDot x={0} y={0.25} r={0} fill="transparent">
-              <YAxisLabel x={0} y={0.25} value="0.25" />
-            </ReferenceDot>
-            <ReferenceDot x={0} y={0.5} r={0} fill="transparent">
-              <YAxisLabel x={0} y={0.5} value="0.5" />
-            </ReferenceDot>
-            <ReferenceDot x={0} y={0.75} r={0} fill="transparent">
-              <YAxisLabel x={0} y={0.75} value="0.75" />
-            </ReferenceDot>
-            <ReferenceDot x={0} y={1} r={0} fill="transparent">
-              <YAxisLabel x={0} y={1} value="1.0" />
-            </ReferenceDot>
+            {/* Y-axis labels and tick marks */}
+            <ReferenceLine 
+              y={0} 
+              stroke="transparent" 
+              label={createYLabel("0.0")}
+            />
+            <ReferenceLine 
+              y={0.25} 
+              stroke="transparent" 
+              label={createYLabel("0.25")}
+            />
+            <ReferenceLine 
+              y={0.5} 
+              stroke="transparent" 
+              label={createYLabel("0.5")}
+            />
+            <ReferenceLine 
+              y={0.75} 
+              stroke="transparent" 
+              label={createYLabel("0.75")}
+            />
+            <ReferenceLine 
+              y={1} 
+              stroke="transparent" 
+              label={createYLabel("1.0")}
+            />
+            
+            {/* Small tick marks on y-axis */}
+            <ReferenceLine x={0} y={0} stroke="#6b7280" strokeWidth={1} />
+            <ReferenceLine x={0} y={0.25} stroke="#6b7280" strokeWidth={1} />
+            <ReferenceLine x={0} y={0.5} stroke="#6b7280" strokeWidth={1} />
+            <ReferenceLine x={0} y={0.75} stroke="#6b7280" strokeWidth={1} />
+            <ReferenceLine x={0} y={1} stroke="#6b7280" strokeWidth={1} />
             
             <Line 
               type="monotone" 
