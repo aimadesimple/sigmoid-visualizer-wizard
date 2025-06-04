@@ -37,9 +37,9 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-white p-3 border border-accent-green rounded shadow-lg">
-          <p className="font-semibold text-logo-dark-blue">{`x = ${label}`}</p>
-          <p className="text-accent-blue">{`σ(x) = ${payload[0].value.toFixed(4)}`}</p>
+        <div className="bg-white p-3 border border-palette-teal rounded shadow-lg">
+          <p className="font-semibold text-palette-blue">{`x = ${label}`}</p>
+          <p className="text-palette-light-blue">{`σ(x) = ${payload[0].value.toFixed(4)}`}</p>
         </div>
       );
     }
@@ -150,13 +150,13 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
         </ResponsiveContainer>
       </div>
       
-      <div className="text-center text-sm text-accent-green">
+      <div className="text-center text-sm text-palette-teal">
         <p>
-          <span className="inline-block w-3 h-3 bg-logo-dark-blue rounded mr-2"></span>
+          <span className="inline-block w-3 h-3 bg-palette-blue rounded mr-2"></span>
           Sigmoid function curve
         </p>
         <p className="mt-1">
-          <span className="inline-block w-3 h-3 bg-logo-green rounded mr-2"></span>
+          <span className="inline-block w-3 h-3 bg-palette-green rounded mr-2"></span>
           Your input point: ({inputValue.toFixed(2)}, {result.toFixed(4)})
         </p>
         <p className="mt-1 text-xs text-gray-500">

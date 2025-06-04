@@ -44,13 +44,12 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 213 82% 51%;
 
-    /* Custom colors from the scheme */
-    --logo-green: 89 92% 60%;
-    --logo-blue: 213 100% 71%;
-    --logo-dark-blue: 213 82% 51%;
-    --accent-green: 151 36% 53%;
-    --accent-blue: 221 80% 62%;
-    --light-gray: 220 14% 96%;
+    /* Palette colors only */
+    --palette-green: 88 92% 60%;      /* #79F73E */
+    --palette-light-blue: 210 100% 72%; /* #6AAFFF */
+    --palette-blue: 213 82% 51%;      /* #1E7CE8 */
+    --palette-teal: 151 36% 53%;      /* #55B685 */
+    --palette-gray: 220 14% 96%;      /* #F3F4F6 */
   }
 
   .dark {
@@ -63,7 +62,7 @@
     --popover: 0 0% 0%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 213 100% 71%;
+    --primary: 210 100% 72%;
     --primary-foreground: 0 0% 0%;
 
     --secondary: 217 33% 17%;
@@ -80,15 +79,15 @@
 
     --border: 217 33% 17%;
     --input: 217 33% 17%;
-    --ring: 213 100% 71%;
+    --ring: 210 100% 72%;
     --sidebar-background: 240 6% 10%;
     --sidebar-foreground: 240 5% 96%;
-    --sidebar-primary: 213 100% 71%;
+    --sidebar-primary: 210 100% 72%;
     --sidebar-primary-foreground: 0 0% 0%;
     --sidebar-accent: 240 4% 16%;
     --sidebar-accent-foreground: 240 5% 96%;
     --sidebar-border: 240 4% 16%;
-    --sidebar-ring: 213 100% 71%;
+    --sidebar-ring: 210 100% 72%;
   }
 }
 
@@ -102,45 +101,51 @@
   }
 }
 
-/* Custom color utilities */
+/* Palette color utilities */
 @layer utilities {
-  .text-logo-green {
-    color: hsl(var(--logo-green));
+  .text-palette-green {
+    color: hsl(var(--palette-green));
   }
-  .text-logo-blue {
-    color: hsl(var(--logo-blue));
+  .text-palette-light-blue {
+    color: hsl(var(--palette-light-blue));
   }
-  .text-logo-dark-blue {
-    color: hsl(var(--logo-dark-blue));
+  .text-palette-blue {
+    color: hsl(var(--palette-blue));
   }
-  .text-accent-green {
-    color: hsl(var(--accent-green));
+  .text-palette-teal {
+    color: hsl(var(--palette-teal));
   }
-  .text-accent-blue {
-    color: hsl(var(--accent-blue));
+  .text-palette-gray {
+    color: hsl(var(--palette-gray));
   }
-  .bg-logo-green {
-    background-color: hsl(var(--logo-green));
+  .bg-palette-green {
+    background-color: hsl(var(--palette-green));
   }
-  .bg-logo-blue {
-    background-color: hsl(var(--logo-blue));
+  .bg-palette-light-blue {
+    background-color: hsl(var(--palette-light-blue));
   }
-  .bg-logo-dark-blue {
-    background-color: hsl(var(--logo-dark-blue));
+  .bg-palette-blue {
+    background-color: hsl(var(--palette-blue));
   }
-  .bg-accent-green {
-    background-color: hsl(var(--accent-green));
+  .bg-palette-teal {
+    background-color: hsl(var(--palette-teal));
   }
-  .bg-accent-blue {
-    background-color: hsl(var(--accent-blue));
+  .bg-palette-gray {
+    background-color: hsl(var(--palette-gray));
   }
-  .border-logo-green {
-    border-color: hsl(var(--logo-green));
+  .border-palette-green {
+    border-color: hsl(var(--palette-green));
   }
-  .border-logo-blue {
-    border-color: hsl(var(--logo-blue));
+  .border-palette-light-blue {
+    border-color: hsl(var(--palette-light-blue));
   }
-  .border-logo-dark-blue {
-    border-color: hsl(var(--logo-dark-blue));
+  .border-palette-blue {
+    border-color: hsl(var(--palette-blue));
+  }
+  .border-palette-teal {
+    border-color: hsl(var(--palette-teal));
+  }
+  .border-palette-gray {
+    border-color: hsl(var(--palette-gray));
   }
 }

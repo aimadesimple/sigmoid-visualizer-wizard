@@ -63,13 +63,12 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom color scheme
-				'logo-green': 'hsl(var(--logo-green))',
-				'logo-blue': 'hsl(var(--logo-blue))',
-				'logo-dark-blue': 'hsl(var(--logo-dark-blue))',
-				'accent-green': 'hsl(var(--accent-green))',
-				'accent-blue': 'hsl(var(--accent-blue))',
-				'light-gray': 'hsl(var(--light-gray))'
+				// Only the 5 palette colors
+				'palette-green': 'hsl(var(--palette-green))',
+				'palette-light-blue': 'hsl(var(--palette-light-blue))',
+				'palette-blue': 'hsl(var(--palette-blue))',
+				'palette-teal': 'hsl(var(--palette-teal))',
+				'palette-gray': 'hsl(var(--palette-gray))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
