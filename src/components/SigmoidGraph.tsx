@@ -1,3 +1,4 @@
+
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceDot, ReferenceLine } from "recharts";
 import { calculateSigmoid } from "@/utils/sigmoidUtils";
 
@@ -60,17 +61,33 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
             />
             <YAxis 
               domain={[0, 1]}
-              stroke="#6b7280"
+              stroke="transparent"
               fontSize={12}
+              tick={false}
+              axisLine={false}
+              tickLine={false}
             />
             <Tooltip content={<CustomTooltip />} />
-            {/* Y-axis reference line at x = 0 */}
+            
+            {/* Y-axis line at x = 0 */}
             <ReferenceLine 
               x={0} 
-              stroke="#9ca3af" 
-              strokeDasharray="5 5"
-              strokeWidth={1}
+              stroke="#6b7280" 
+              strokeWidth={2}
             />
+            
+            {/* Y-axis tick marks and labels */}
+            <ReferenceLine y={0} x={0} stroke="#6b7280" strokeWidth={1} />
+            <ReferenceLine y={0.25} x={0} stroke="#6b7280" strokeWidth={1} />
+            <ReferenceLine y={0.5} x={0} stroke="#6b7280" strokeWidth={1} />
+            <ReferenceLine y={0.75} x={0} stroke="#6b7280" strokeWidth={1} />
+            <ReferenceLine y={1} x={0} stroke="#6b7280" strokeWidth={1} />
+            
+            {/* Horizontal reference lines for major y-values */}
+            <ReferenceLine y={0} stroke="#e0e7ff" strokeDasharray="2 2" strokeWidth={1} />
+            <ReferenceLine y={0.5} stroke="#e0e7ff" strokeDasharray="2 2" strokeWidth={1} />
+            <ReferenceLine y={1} stroke="#e0e7ff" strokeDasharray="2 2" strokeWidth={1} />
+            
             <Line 
               type="monotone" 
               dataKey="y" 
@@ -90,6 +107,15 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
             />
           </LineChart>
         </ResponsiveContainer>
+      </div>
+      
+      {/* Add custom y-axis labels positioned at x=0 */}
+      <div className="relative">
+        <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-full text-xs text-gray-600 space-y-16">
+          <div className="text-center">1.0</div>
+          <div className="text-center">0.5</div>
+          <div className="text-center">0.0</div>
+        </div>
       </div>
       
       <div className="text-center text-sm text-gray-600">
