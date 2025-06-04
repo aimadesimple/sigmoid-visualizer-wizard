@@ -1,5 +1,4 @@
-
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceDot } from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceDot, ReferenceLine } from "recharts";
 import { calculateSigmoid } from "@/utils/sigmoidUtils";
 
 interface SigmoidGraphProps {
@@ -65,6 +64,13 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
               fontSize={12}
             />
             <Tooltip content={<CustomTooltip />} />
+            {/* Y-axis reference line at x = 0 */}
+            <ReferenceLine 
+              x={0} 
+              stroke="#9ca3af" 
+              strokeDasharray="5 5"
+              strokeWidth={1}
+            />
             <Line 
               type="monotone" 
               dataKey="y" 
