@@ -46,6 +46,20 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
     return null;
   };
 
+  // Custom label component for y-axis values
+  const YAxisLabel = ({ x, y, value }: { x: number; y: number; value: string }) => (
+    <text 
+      x={x - 15} 
+      y={y + 4} 
+      textAnchor="end" 
+      fontSize="12" 
+      fill="#6b7280"
+      fontFamily="sans-serif"
+    >
+      {value}
+    </text>
+  );
+
   return (
     <div className="space-y-4">
       <div className="h-80">
@@ -76,17 +90,27 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
               strokeWidth={2}
             />
             
-            {/* Y-axis tick marks and labels */}
-            <ReferenceLine y={0} x={0} stroke="#6b7280" strokeWidth={1} />
-            <ReferenceLine y={0.25} x={0} stroke="#6b7280" strokeWidth={1} />
-            <ReferenceLine y={0.5} x={0} stroke="#6b7280" strokeWidth={1} />
-            <ReferenceLine y={0.75} x={0} stroke="#6b7280" strokeWidth={1} />
-            <ReferenceLine y={1} x={0} stroke="#6b7280" strokeWidth={1} />
-            
             {/* Horizontal reference lines for major y-values */}
             <ReferenceLine y={0} stroke="#e0e7ff" strokeDasharray="2 2" strokeWidth={1} />
             <ReferenceLine y={0.5} stroke="#e0e7ff" strokeDasharray="2 2" strokeWidth={1} />
             <ReferenceLine y={1} stroke="#e0e7ff" strokeDasharray="2 2" strokeWidth={1} />
+            
+            {/* Y-axis labels using ReferenceDot with custom labels */}
+            <ReferenceDot x={0} y={0} r={0} fill="transparent">
+              <YAxisLabel x={0} y={0} value="0.0" />
+            </ReferenceDot>
+            <ReferenceDot x={0} y={0.25} r={0} fill="transparent">
+              <YAxisLabel x={0} y={0.25} value="0.25" />
+            </ReferenceDot>
+            <ReferenceDot x={0} y={0.5} r={0} fill="transparent">
+              <YAxisLabel x={0} y={0.5} value="0.5" />
+            </ReferenceDot>
+            <ReferenceDot x={0} y={0.75} r={0} fill="transparent">
+              <YAxisLabel x={0} y={0.75} value="0.75" />
+            </ReferenceDot>
+            <ReferenceDot x={0} y={1} r={0} fill="transparent">
+              <YAxisLabel x={0} y={1} value="1.0" />
+            </ReferenceDot>
             
             <Line 
               type="monotone" 
@@ -107,15 +131,6 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
             />
           </LineChart>
         </ResponsiveContainer>
-      </div>
-      
-      {/* Add custom y-axis labels positioned at x=0 */}
-      <div className="relative">
-        <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-full text-xs text-gray-600 space-y-16">
-          <div className="text-center">1.0</div>
-          <div className="text-center">0.5</div>
-          <div className="text-center">0.0</div>
-        </div>
       </div>
       
       <div className="text-center text-sm text-gray-600">
