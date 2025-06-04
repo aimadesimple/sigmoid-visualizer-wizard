@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { InlineMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 import MathWorkings from "./MathWorkings";
 import SigmoidGraph from "./SigmoidGraph";
 import { calculateSigmoid } from "@/utils/sigmoidUtils";
@@ -63,9 +65,9 @@ const SigmoidCalculator = () => {
       <Card className="p-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
         <div className="text-center">
           <h3 className="text-xl font-semibold mb-2">Result</h3>
-          <p className="text-3xl font-bold">
-            σ({inputValue || "0"}) = {result.toFixed(6)}
-          </p>
+          <div className="text-3xl font-bold">
+            <InlineMath math={`\\sigma(${inputValue || "0"}) = ${result.toFixed(6)}`} />
+          </div>
         </div>
       </Card>
     </div>

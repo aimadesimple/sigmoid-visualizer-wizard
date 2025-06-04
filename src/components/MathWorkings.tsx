@@ -1,4 +1,7 @@
 
+import 'katex/dist/katex.min.css';
+import { InlineMath, BlockMath } from 'react-katex';
+
 interface MathWorkingsProps {
   inputValue: number;
   result: number;
@@ -9,15 +12,12 @@ const MathWorkings = ({ inputValue, result }: MathWorkingsProps) => {
   const denominator = 1 + expValue;
 
   return (
-    <div className="space-y-4 font-mono">
+    <div className="space-y-4">
       {/* Formula */}
       <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
         <h3 className="font-bold text-gray-800 mb-2">Sigmoid Function Formula:</h3>
-        <div className="text-lg text-center">
-          <span className="text-blue-600">σ(x) = </span>
-          <span className="border-b border-gray-400 px-2">1</span>
-          <br />
-          <span className="ml-12">1 + e⁻ˣ</span>
+        <div className="text-center">
+          <BlockMath math="\sigma(x) = \frac{1}{1 + e^{-x}}" />
         </div>
       </div>
 
@@ -26,35 +26,30 @@ const MathWorkings = ({ inputValue, result }: MathWorkingsProps) => {
         <h3 className="font-bold text-gray-800">Step-by-step calculation:</h3>
         
         <div className="bg-gray-50 p-3 rounded border">
-          <strong>Step 1:</strong> Substitute x = {inputValue}
-          <div className="ml-4 mt-1">
-            σ({inputValue}) = <span className="border-b border-gray-400 px-2">1</span>
-            <br />
-            <span className="ml-12">1 + e⁻⁽{inputValue}⁾</span>
+          <strong>Step 1:</strong> Substitute <InlineMath math={`x = ${inputValue}`} />
+          <div className="mt-2 text-center">
+            <BlockMath math={`\\sigma(${inputValue}) = \\frac{1}{1 + e^{-(${inputValue})}}`} />
           </div>
         </div>
 
         <div className="bg-gray-50 p-3 rounded border">
-          <strong>Step 2:</strong> Calculate e⁻⁽{inputValue}⁾
-          <div className="ml-4 mt-1">
-            e⁻⁽{inputValue}⁾ = e^({-inputValue}) = {expValue.toFixed(6)}
+          <strong>Step 2:</strong> Calculate <InlineMath math={`e^{-(${inputValue})}`} />
+          <div className="mt-2">
+            <InlineMath math={`e^{-(${inputValue})} = e^{${-inputValue}} = ${expValue.toFixed(6)}`} />
           </div>
         </div>
 
         <div className="bg-gray-50 p-3 rounded border">
           <strong>Step 3:</strong> Calculate denominator
-          <div className="ml-4 mt-1">
-            1 + e⁻⁽{inputValue}⁾ = 1 + {expValue.toFixed(6)} = {denominator.toFixed(6)}
+          <div className="mt-2">
+            <InlineMath math={`1 + e^{-(${inputValue})} = 1 + ${expValue.toFixed(6)} = ${denominator.toFixed(6)}`} />
           </div>
         </div>
 
         <div className="bg-green-50 p-3 rounded border border-green-200">
           <strong>Step 4:</strong> Final result
-          <div className="ml-4 mt-1">
-            σ({inputValue}) = <span className="border-b border-gray-400 px-2">1</span> = <span className="border-b border-gray-400 px-2">1</span> = <strong className="text-green-700">{result.toFixed(6)}</strong>
-            <br />
-            <span className="ml-12">{denominator.toFixed(6)}</span>
-            <span className="ml-8">{denominator.toFixed(6)}</span>
+          <div className="mt-2 text-center">
+            <BlockMath math={`\\sigma(${inputValue}) = \\frac{1}{${denominator.toFixed(6)}} = ${result.toFixed(6)}`} />
           </div>
         </div>
       </div>
@@ -62,12 +57,12 @@ const MathWorkings = ({ inputValue, result }: MathWorkingsProps) => {
       {/* Properties */}
       <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
         <h3 className="font-bold text-gray-800 mb-2">Properties:</h3>
-        <ul className="text-sm space-y-1">
-          <li>• Range: (0, 1) - always between 0 and 1</li>
-          <li>• σ(0) = 0.5 - symmetric around the origin</li>
-          <li>• σ(-x) = 1 - σ(x) - antisymmetric property</li>
-          <li>• As x → ∞, σ(x) → 1</li>
-          <li>• As x → -∞, σ(x) → 0</li>
+        <ul className="text-sm space-y-2">
+          <li>• Range: <InlineMath math="(0, 1)" /> - always between 0 and 1</li>
+          <li>• <InlineMath math="\sigma(0) = 0.5" /> - symmetric around the origin</li>
+          <li>• <InlineMath math="\sigma(-x) = 1 - \sigma(x)" /> - antisymmetric property</li>
+          <li>• As <InlineMath math="x \to \infty" />, <InlineMath math="\sigma(x) \to 1" /></li>
+          <li>• As <InlineMath math="x \to -\infty" />, <InlineMath math="\sigma(x) \to 0" /></li>
         </ul>
       </div>
     </div>
