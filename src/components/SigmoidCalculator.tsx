@@ -42,8 +42,8 @@ const SigmoidCalculator = () => {
         </div>
       </Card>
 
-      {/* Simple Result Summary with Gradient */}
-      <Card className="p-6 text-white shadow-lg bg-gradient-to-r from-blue-500 to-purple-600">
+      {/* Simple Result Summary with Palette Colors */}
+      <Card className="p-6 text-white shadow-lg bg-gradient-to-r from-palette-blue to-palette-teal">
         <div className="text-center">
           <h3 className="text-xl font-semibold mb-2">Result</h3>
           <div className="text-3xl font-bold">
