@@ -1,4 +1,3 @@
-
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceDot, ReferenceLine } from "recharts";
 import { calculateSigmoid } from "@/utils/sigmoidUtils";
 
@@ -37,7 +36,7 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-white p-3 border border-palette-teal rounded shadow-lg">
+        <div className="bg-white p-3 border-2 border-palette-teal rounded shadow-lg">
           <p className="font-semibold text-palette-blue">{`x = ${label}`}</p>
           <p className="text-palette-light-blue">{`σ(x) = ${payload[0].value.toFixed(4)}`}</p>
         </div>
@@ -53,7 +52,7 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
       y={props.viewBox.y + 4} 
       textAnchor="end" 
       fontSize="12" 
-      fill="#55B685"
+      fill="#2A9C68"
       fontFamily="sans-serif"
     >
       {value}
@@ -65,12 +64,12 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
       <div className="h-80">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data} margin={{ top: 20, right: 30, left: 40, bottom: 20 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
             <XAxis 
               dataKey="x" 
               type="number" 
               domain={[min, max]}
-              stroke="#55B685"
+              stroke="#2A9C68"
               fontSize={12}
             />
             <YAxis 
@@ -86,14 +85,14 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
             {/* Y-axis line at x = 0 */}
             <ReferenceLine 
               x={0} 
-              stroke="#55B685" 
+              stroke="#2A9C68" 
               strokeWidth={2}
             />
             
             {/* Horizontal reference lines for major y-values */}
-            <ReferenceLine y={0} stroke="#F3F4F6" strokeDasharray="2 2" strokeWidth={1} />
-            <ReferenceLine y={0.5} stroke="#F3F4F6" strokeDasharray="2 2" strokeWidth={1} />
-            <ReferenceLine y={1} stroke="#F3F4F6" strokeDasharray="2 2" strokeWidth={1} />
+            <ReferenceLine y={0} stroke="#e5e7eb" strokeDasharray="2 2" strokeWidth={1} />
+            <ReferenceLine y={0.5} stroke="#e5e7eb" strokeDasharray="2 2" strokeWidth={1} />
+            <ReferenceLine y={1} stroke="#e5e7eb" strokeDasharray="2 2" strokeWidth={1} />
             
             {/* Y-axis labels and tick marks */}
             <ReferenceLine 
@@ -123,11 +122,11 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
             />
             
             {/* Small tick marks on y-axis */}
-            <ReferenceLine x={0} y={0} stroke="#55B685" strokeWidth={1} />
-            <ReferenceLine x={0} y={0.25} stroke="#55B685" strokeWidth={1} />
-            <ReferenceLine x={0} y={0.5} stroke="#55B685" strokeWidth={1} />
-            <ReferenceLine x={0} y={0.75} stroke="#55B685" strokeWidth={1} />
-            <ReferenceLine x={0} y={1} stroke="#55B685" strokeWidth={1} />
+            <ReferenceLine x={0} y={0} stroke="#2A9C68" strokeWidth={1} />
+            <ReferenceLine x={0} y={0.25} stroke="#2A9C68" strokeWidth={1} />
+            <ReferenceLine x={0} y={0.5} stroke="#2A9C68" strokeWidth={1} />
+            <ReferenceLine x={0} y={0.75} stroke="#2A9C68" strokeWidth={1} />
+            <ReferenceLine x={0} y={1} stroke="#2A9C68" strokeWidth={1} />
             
             <Line 
               type="monotone" 
@@ -142,15 +141,15 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
               x={inputValue} 
               y={result} 
               r={8} 
-              fill="#79F73E" 
-              stroke="#55B685"
+              fill="#00C853" 
+              stroke="#2A9C68"
               strokeWidth={2}
             />
           </LineChart>
         </ResponsiveContainer>
       </div>
       
-      <div className="text-center text-sm text-palette-teal">
+      <div className="text-center text-sm text-gray-600">
         <p>
           <span className="inline-block w-3 h-3 bg-palette-blue rounded mr-2"></span>
           Sigmoid function curve

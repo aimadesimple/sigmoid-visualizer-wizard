@@ -25,9 +25,9 @@ const SigmoidCalculator = () => {
   return (
     <div className="max-w-6xl mx-auto space-y-8">
       {/* Input Section */}
-      <Card className="p-6 bg-white/80 backdrop-blur-sm border-palette-light-blue/30">
+      <Card className="p-6 bg-white shadow-lg border-2 border-palette-light-blue/20">
         <div className="max-w-md mx-auto text-center">
-          <Label htmlFor="input-value" className="text-lg font-semibold text-gray-700 block mb-3">
+          <Label htmlFor="input-value" className="text-lg font-semibold text-black block mb-3">
             Enter a number (x):
           </Label>
           <Input
@@ -35,7 +35,7 @@ const SigmoidCalculator = () => {
             type="number"
             value={inputValue}
             onChange={handleInputChange}
-            className="text-lg text-center border-palette-blue/30 focus:border-palette-blue"
+            className="text-lg text-center border-2 border-palette-blue/30 focus:border-palette-blue"
             placeholder="Enter any real number..."
             step="any"
           />
@@ -43,7 +43,7 @@ const SigmoidCalculator = () => {
       </Card>
 
       {/* Result Summary */}
-      <Card className="p-6 bg-gradient-to-r from-palette-blue to-palette-light-blue text-white">
+      <Card className="p-6 bg-gradient-to-r from-palette-green to-palette-light-blue text-white shadow-lg">
         <div className="text-center">
           <h3 className="text-xl font-semibold mb-2">Result</h3>
           <div className="text-3xl font-bold">
@@ -55,16 +55,16 @@ const SigmoidCalculator = () => {
       {/* Results Grid */}
       <div className="grid lg:grid-cols-2 gap-8">
         {/* Mathematical Workings */}
-        <Card className="p-6 bg-white/80 backdrop-blur-sm border-palette-light-blue/30">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+        <Card className="p-6 bg-white shadow-lg border-2 border-palette-light-blue/20">
+          <h2 className="text-2xl font-bold text-black mb-4">
             Mathematical Working
           </h2>
           <MathWorkings inputValue={parseFloat(inputValue) || 0} result={result} />
         </Card>
 
         {/* Graph Visualization */}
-        <Card className="p-6 bg-white/80 backdrop-blur-sm border-palette-light-blue/30">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+        <Card className="p-6 bg-white shadow-lg border-2 border-palette-light-blue/20">
+          <h2 className="text-2xl font-bold text-black mb-4">
             Sigmoid Function Graph
           </h2>
           <SigmoidGraph inputValue={parseFloat(inputValue) || 0} result={result} />
