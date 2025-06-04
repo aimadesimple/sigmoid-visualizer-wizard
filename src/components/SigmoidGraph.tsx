@@ -8,12 +8,24 @@ interface SigmoidGraphProps {
 }
 
 const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
-  // Generate data points for the sigmoid curve
+  // Calculate dynamic range based on input value
+  const getDynamicRange = (input: number) => {
+    const absInput = Math.abs(input);
+    // Base range is 10, but expand if input is larger
+    const baseRange = Math.max(10, absInput + 5);
+    return { min: -baseRange, max: baseRange };
+  };
+
+  const { min, max } = getDynamicRange(inputValue);
+
+  // Generate data points for the sigmoid curve with dynamic range
   const generateData = () => {
     const data = [];
-    for (let x = -10; x <= 10; x += 0.2) {
+    const step = (max - min) / 200; // More points for smoother curve
+    
+    for (let x = min; x <= max; x += step) {
       data.push({
-        x: parseFloat(x.toFixed(1)),
+        x: parseFloat(x.toFixed(2)),
         y: calculateSigmoid(x),
       });
     }
@@ -43,7 +55,7 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
             <XAxis 
               dataKey="x" 
               type="number" 
-              domain={[-10, 10]}
+              domain={[min, max]}
               stroke="#6b7280"
               fontSize={12}
             />
@@ -82,6 +94,9 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
         <p className="mt-1">
           <span className="inline-block w-3 h-3 bg-red-500 rounded mr-2"></span>
           Your input point: ({inputValue.toFixed(2)}, {result.toFixed(4)})
+        </p>
+        <p className="mt-1 text-xs text-gray-500">
+          X-axis range: {min} to {max}
         </p>
       </div>
     </div>

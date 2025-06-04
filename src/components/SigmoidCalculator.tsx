@@ -26,8 +26,8 @@ const SigmoidCalculator = () => {
     <div className="max-w-6xl mx-auto space-y-8">
       {/* Input Section */}
       <Card className="p-6 bg-white/80 backdrop-blur-sm border-blue-200">
-        <div className="max-w-md mx-auto">
-          <Label htmlFor="input-value" className="text-lg font-semibold text-gray-700">
+        <div className="max-w-md mx-auto text-center">
+          <Label htmlFor="input-value" className="text-lg font-semibold text-gray-700 block mb-3">
             Enter a number (x):
           </Label>
           <Input
@@ -35,10 +35,20 @@ const SigmoidCalculator = () => {
             type="number"
             value={inputValue}
             onChange={handleInputChange}
-            className="mt-2 text-lg text-center border-blue-300 focus:border-blue-500"
+            className="text-lg text-center border-blue-300 focus:border-blue-500"
             placeholder="Enter any real number..."
             step="any"
           />
+        </div>
+      </Card>
+
+      {/* Result Summary */}
+      <Card className="p-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+        <div className="text-center">
+          <h3 className="text-xl font-semibold mb-2">Result</h3>
+          <div className="text-3xl font-bold">
+            <InlineMath math={`\\sigma(${inputValue || "0"}) = ${result.toFixed(6)}`} />
+          </div>
         </div>
       </Card>
 
@@ -60,16 +70,6 @@ const SigmoidCalculator = () => {
           <SigmoidGraph inputValue={parseFloat(inputValue) || 0} result={result} />
         </Card>
       </div>
-
-      {/* Result Summary */}
-      <Card className="p-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
-        <div className="text-center">
-          <h3 className="text-xl font-semibold mb-2">Result</h3>
-          <div className="text-3xl font-bold">
-            <InlineMath math={`\\sigma(${inputValue || "0"}) = ${result.toFixed(6)}`} />
-          </div>
-        </div>
-      </Card>
     </div>
   );
 };
