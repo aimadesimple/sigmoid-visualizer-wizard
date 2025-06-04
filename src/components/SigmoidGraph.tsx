@@ -1,3 +1,4 @@
+
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceDot, ReferenceLine } from "recharts";
 import { calculateSigmoid } from "@/utils/sigmoidUtils";
 
@@ -36,9 +37,9 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-white p-3 border-2 border-palette-teal rounded shadow-lg">
-          <p className="font-semibold text-palette-blue">{`x = ${label}`}</p>
-          <p className="text-palette-light-blue">{`σ(x) = ${payload[0].value.toFixed(4)}`}</p>
+        <div className="bg-white p-3 border-2 border-gray-300 rounded shadow-lg">
+          <p className="font-semibold text-black">{`x = ${label}`}</p>
+          <p className="text-gray-600">{`σ(x) = ${payload[0].value.toFixed(4)}`}</p>
         </div>
       );
     }
@@ -52,7 +53,7 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
       y={props.viewBox.y + 4} 
       textAnchor="end" 
       fontSize="12" 
-      fill="#2A9C68"
+      fill="#374151"
       fontFamily="sans-serif"
     >
       {value}
@@ -64,12 +65,12 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
       <div className="h-80">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data} margin={{ top: 20, right: 30, left: 40, bottom: 20 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#d1d5db" />
             <XAxis 
               dataKey="x" 
               type="number" 
               domain={[min, max]}
-              stroke="#2A9C68"
+              stroke="#374151"
               fontSize={12}
             />
             <YAxis 
@@ -85,14 +86,14 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
             {/* Y-axis line at x = 0 */}
             <ReferenceLine 
               x={0} 
-              stroke="#2A9C68" 
+              stroke="#374151" 
               strokeWidth={2}
             />
             
             {/* Horizontal reference lines for major y-values */}
-            <ReferenceLine y={0} stroke="#e5e7eb" strokeDasharray="2 2" strokeWidth={1} />
-            <ReferenceLine y={0.5} stroke="#e5e7eb" strokeDasharray="2 2" strokeWidth={1} />
-            <ReferenceLine y={1} stroke="#e5e7eb" strokeDasharray="2 2" strokeWidth={1} />
+            <ReferenceLine y={0} stroke="#d1d5db" strokeDasharray="2 2" strokeWidth={1} />
+            <ReferenceLine y={0.5} stroke="#d1d5db" strokeDasharray="2 2" strokeWidth={1} />
+            <ReferenceLine y={1} stroke="#d1d5db" strokeDasharray="2 2" strokeWidth={1} />
             
             {/* Y-axis labels and tick marks */}
             <ReferenceLine 
@@ -122,11 +123,11 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
             />
             
             {/* Small tick marks on y-axis */}
-            <ReferenceLine x={0} y={0} stroke="#2A9C68" strokeWidth={1} />
-            <ReferenceLine x={0} y={0.25} stroke="#2A9C68" strokeWidth={1} />
-            <ReferenceLine x={0} y={0.5} stroke="#2A9C68" strokeWidth={1} />
-            <ReferenceLine x={0} y={0.75} stroke="#2A9C68" strokeWidth={1} />
-            <ReferenceLine x={0} y={1} stroke="#2A9C68" strokeWidth={1} />
+            <ReferenceLine x={0} y={0} stroke="#374151" strokeWidth={1} />
+            <ReferenceLine x={0} y={0.25} stroke="#374151" strokeWidth={1} />
+            <ReferenceLine x={0} y={0.5} stroke="#374151" strokeWidth={1} />
+            <ReferenceLine x={0} y={0.75} stroke="#374151" strokeWidth={1} />
+            <ReferenceLine x={0} y={1} stroke="#374151" strokeWidth={1} />
             
             <Line 
               type="monotone" 
@@ -136,13 +137,13 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
               dot={false}
               activeDot={{ r: 6, fill: "#1E7CE8" }}
             />
-            {/* Highlight the current input point */}
+            {/* Highlight the current input point with red color */}
             <ReferenceDot 
               x={inputValue} 
               y={result} 
               r={8} 
-              fill="#00C853" 
-              stroke="#2A9C68"
+              fill="#ef4444" 
+              stroke="#dc2626"
               strokeWidth={2}
             />
           </LineChart>
@@ -151,11 +152,11 @@ const SigmoidGraph = ({ inputValue, result }: SigmoidGraphProps) => {
       
       <div className="text-center text-sm text-gray-600">
         <p>
-          <span className="inline-block w-3 h-3 bg-palette-blue rounded mr-2"></span>
+          <span className="inline-block w-3 h-3 bg-blue-500 rounded mr-2"></span>
           Sigmoid function curve
         </p>
         <p className="mt-1">
-          <span className="inline-block w-3 h-3 bg-palette-green rounded mr-2"></span>
+          <span className="inline-block w-3 h-3 bg-red-500 rounded mr-2"></span>
           Your input point: ({inputValue.toFixed(2)}, {result.toFixed(4)})
         </p>
         <p className="mt-1 text-xs text-gray-500">

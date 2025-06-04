@@ -25,7 +25,7 @@ const SigmoidCalculator = () => {
   return (
     <div className="max-w-6xl mx-auto space-y-8">
       {/* Input Section */}
-      <Card className="p-6 bg-white shadow-lg border-2 border-palette-light-blue/20">
+      <Card className="p-6 bg-white shadow-lg border-2 border-gray-200">
         <div className="max-w-md mx-auto text-center">
           <Label htmlFor="input-value" className="text-lg font-semibold text-black block mb-3">
             Enter a number (x):
@@ -35,7 +35,7 @@ const SigmoidCalculator = () => {
             type="number"
             value={inputValue}
             onChange={handleInputChange}
-            className="text-lg text-center border-2 border-palette-blue/30 focus:border-palette-blue"
+            className="text-lg text-center border-2 border-gray-300 focus:border-blue-500"
             placeholder="Enter any real number..."
             step="any"
           />
@@ -43,7 +43,7 @@ const SigmoidCalculator = () => {
       </Card>
 
       {/* Result Summary */}
-      <Card className="p-6 bg-gradient-to-r from-palette-green to-palette-light-blue text-white shadow-lg">
+      <Card className="p-6 text-white shadow-lg" style={{ backgroundColor: '#55B685' }}>
         <div className="text-center">
           <h3 className="text-xl font-semibold mb-2">Result</h3>
           <div className="text-3xl font-bold">
@@ -55,7 +55,7 @@ const SigmoidCalculator = () => {
       {/* Results Grid */}
       <div className="grid lg:grid-cols-2 gap-8">
         {/* Mathematical Workings */}
-        <Card className="p-6 bg-white shadow-lg border-2 border-palette-light-blue/20">
+        <Card className="p-6 bg-white shadow-lg border-2 border-gray-200">
           <h2 className="text-2xl font-bold text-black mb-4">
             Mathematical Working
           </h2>
@@ -63,7 +63,7 @@ const SigmoidCalculator = () => {
         </Card>
 
         {/* Graph Visualization */}
-        <Card className="p-6 bg-white shadow-lg border-2 border-palette-light-blue/20">
+        <Card className="p-6 bg-white shadow-lg border-2 border-gray-200">
           <h2 className="text-2xl font-bold text-black mb-4">
             Sigmoid Function Graph
           </h2>
